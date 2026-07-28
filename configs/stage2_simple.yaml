@@ -1,0 +1,32 @@
+experiment: stage2_simple_single_query_fixed_teacher
+model: BiomedCLIP-PubMedBERT_256-vit_base_patch16_224
+pretrained: /home/hyr/clip/biomedclip_encoder_generalization/BiomedCLIP-PubMedBERT/open_clip_pytorch_model.bin
+selected_layers: [4, 8, 12]
+embed_dim: z_base_dim
+num_queries: 1
+num_heads: 8
+topk_per_pathology: 4
+teacher_temperature: 0.07
+lambda_pres: 0.1
+lambda_local: 1.0
+lambda_attn: 1.0
+epochs: 10
+batch_size: 32
+learning_rate: 0.0001
+weight_decay: 0.01
+seed: 42
+forbidden_in_stage2:
+  - source_id
+  - cross_source_positive_pairs
+  - US-CPA
+  - held_out_source_training_data
+loso:
+  mimic:
+    train_jsonl: /home/hyr/clip/biomedclip_encoder_generalization/dataset/heldout_mimic/train_chexpert_padchest_heldout_mimic.jsonl
+    stage1_checkpoint: /home/hyr/clip/biomedclip_encoder_generalization/open_clip/src/logs/h0_stage1_hcpa_p_clip_vitb16_heldout_mimic_seed42/checkpoints/epoch_10.pt
+  chexpert:
+    train_jsonl: /home/hyr/clip/biomedclip_encoder_generalization/dataset/heldout_chexpert/train_mimic_padchest_heldout_chexpert.jsonl
+    stage1_checkpoint: /home/hyr/clip/biomedclip_encoder_generalization/open_clip/src/logs/h0_stage1_hcpa_p_clip_vitb16_heldout_chexpert_seed42/checkpoints/epoch_9.pt
+  padchest:
+    train_jsonl: /home/hyr/clip/biomedclip_encoder_generalization/dataset/heldout_padchest/train_mimic_chexpert_heldout_padchest.jsonl
+    stage1_checkpoint: /home/hyr/clip/biomedclip_encoder_generalization/open_clip/src/logs/h0_stage1_hcpa_p_heldout_padchest_nooldcpa/checkpoints/epoch_20.pt

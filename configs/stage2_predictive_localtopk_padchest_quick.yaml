@@ -1,0 +1,26 @@
+# Predictive LocalTopK Stage 2 quick validation config.
+heldout: padchest
+stage1_checkpoint: open_clip/src/logs/h0_stage1_hcpa_p_heldout_padchest_nooldcpa/checkpoints/epoch_20.pt
+train_cache_dir: open_clip/src/logs/h0_stage2_v2_anchor_sparse_heldout_padchest_cached30k_ep3_seed42/cache30k
+model: BiomedCLIP-PubMedBERT_256-vit_base_patch16_224
+pretrained: /home/hyr/clip/biomedclip_encoder_generalization/BiomedCLIP-PubMedBERT/open_clip_pytorch_model.bin
+selected_layers: [3, 6, 9, 12]
+refiner:
+  type: predictive_localtopk
+  topk: 4
+  alpha_train_init: 0.5
+  alpha_inference_recommended: 1.25
+  exclude_indices: [12, 13]  # Support Devices, No Finding
+  lambda_z: 2.0
+  lambda_router_bce: 1.0
+  lambda_pres: 0.2
+training:
+  epochs: 3
+  batch_size: 512
+  lr: 5.0e-4
+  weight_decay: 0.01
+  seed: 42
+validation:
+  split_root: /home/hyr/clip/MedCLIP-SAMv2-main/data/loso_splits_two_text/chexpert14_csv_by_holdout/holdout_sid2_PadChest_full_from_biomedclip_jsonl
+  probe_seeds: [0, 1, 2, 3, 4]
+  result_dir: experiments/stage2_dynamic_localtopk/predictive_stage2_named_alpha125

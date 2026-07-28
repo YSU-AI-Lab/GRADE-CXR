@@ -1,0 +1,23 @@
+project_root: /home/hyr/clip/biomedclip_encoder_generalization
+output_root: /home/hyr/clip/biomedclip_encoder_generalization/baselines_reproduction
+method: FG-CLIP-CXR
+scope: CXR-adapted fine-grained text alignment; no ROIAlign or region-level FineHARD pipeline.
+model: BiomedCLIP-PubMedBERT_256-vit_base_patch16_224
+pretrained: /home/hyr/clip/biomedclip_encoder_generalization/BiomedCLIP-PubMedBERT/open_clip_pytorch_model.bin
+heldout_splits:
+  mimic:
+    train_jsonl: /home/hyr/clip/biomedclip_encoder_generalization/dataset/heldout_mimic/train_chexpert_padchest_heldout_mimic.jsonl
+    heldout_jsonl: /home/hyr/clip/biomedclip_encoder_generalization/dataset/heldout_mimic/heldout_mimic_full.jsonl
+  chexpert:
+    train_jsonl: /home/hyr/clip/biomedclip_encoder_generalization/dataset/heldout_chexpert/train_mimic_padchest_heldout_chexpert.jsonl
+    heldout_jsonl: /home/hyr/clip/biomedclip_encoder_generalization/dataset/heldout_chexpert/heldout_chexpert_full.jsonl
+  padchest:
+    train_jsonl: /home/hyr/clip/biomedclip_encoder_generalization/dataset/heldout_padchest/train_mimic_chexpert_heldout_padchest.jsonl
+    heldout_jsonl: /home/hyr/clip/biomedclip_encoder_generalization/dataset/heldout_padchest/heldout_padchest_full.jsonl
+training:
+  epochs: 1
+  batch_size: 16
+  lr: 0.00001
+  weight_decay: 0.01
+linear_probe:
+  fractions: [0.01, 0.10, 0.50]

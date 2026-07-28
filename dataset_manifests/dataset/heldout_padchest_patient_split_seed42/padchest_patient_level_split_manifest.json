@@ -1,0 +1,61 @@
+{
+  "created_from_jsonl": "/home/hyr/clip/biomedclip_encoder_generalization/dataset/heldout_padchest/heldout_padchest_full.jsonl",
+  "metadata_csv": "/home/hyr/Medical_Image_Analysis-main/AM_MRG/dataset/PadChest_full/PC/PADCHEST_chest_x_ray_images_labels_160K_01.02.19.csv",
+  "output_dir": "/home/hyr/clip/biomedclip_encoder_generalization/dataset/heldout_padchest_patient_split_seed42",
+  "seed": 42,
+  "split_unit": "PatientID",
+  "ratio_target_by_images": {
+    "train": 0.7,
+    "val": 0.1,
+    "test": 0.2
+  },
+  "algorithm": "deterministic patient shuffle with seed 42; assign intact patient groups to train, val, test to approximate 70/10/20 by image count; no multilabel stratification",
+  "matched_images": 160861,
+  "unique_patients": 67625,
+  "unique_studies": 109931,
+  "counts_by_split": {
+    "train": {
+      "images": 112604,
+      "patients": 47469,
+      "studies": 77062
+    },
+    "val": {
+      "images": 16086,
+      "patients": 6660,
+      "studies": 10933
+    },
+    "test": {
+      "images": 32171,
+      "patients": 13496,
+      "studies": 21936
+    }
+  },
+  "patient_leakage": {
+    "train_val": 0,
+    "train_test": 0,
+    "val_test": 0
+  },
+  "label_names": [
+    "Atelectasis",
+    "Cardiomegaly",
+    "Consolidation",
+    "Edema",
+    "Enlarged Cardiomediastinum",
+    "Fracture",
+    "Lung Lesion",
+    "Lung Opacity",
+    "Pleural Effusion",
+    "Pleural Other",
+    "Pneumonia",
+    "Pneumothorax",
+    "Support Devices",
+    "No Finding"
+  ],
+  "outputs": [
+    "/home/hyr/clip/biomedclip_encoder_generalization/dataset/heldout_padchest_patient_split_seed42/padchest_train_patient_seed42.jsonl",
+    "/home/hyr/clip/biomedclip_encoder_generalization/dataset/heldout_padchest_patient_split_seed42/padchest_val_patient_seed42.jsonl",
+    "/home/hyr/clip/biomedclip_encoder_generalization/dataset/heldout_padchest_patient_split_seed42/padchest_test_patient_seed42.jsonl",
+    "/home/hyr/clip/biomedclip_encoder_generalization/dataset/heldout_padchest_patient_split_seed42/padchest_patient_level_split_index.csv",
+    "/home/hyr/clip/biomedclip_encoder_generalization/dataset/heldout_padchest_patient_split_seed42/padchest_patient_level_split_stats.csv"
+  ]
+}

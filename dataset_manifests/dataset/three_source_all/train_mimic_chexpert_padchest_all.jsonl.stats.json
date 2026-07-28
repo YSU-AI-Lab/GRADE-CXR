@@ -1,0 +1,150 @@
+{
+  "output": "dataset/three_source_all/train_mimic_chexpert_padchest_all.jsonl",
+  "inputs": [
+    "dataset/data/mimic_14label_report_nosection.jsonl",
+    "dataset/data/chexpert_v1_small_14label_report_full_from_clip.jsonl",
+    "dataset/data/padchest_14label_report.jsonl"
+  ],
+  "label_method": "weak CheXpert-14 labels parsed from Disease field, exact mapping from tools/add_chexpert14_labels_from_disease.py",
+  "stats": {
+    "rows": 558058,
+    "observed": 480914,
+    "pos_No Finding": 145530,
+    "pos_Consolidation": 20027,
+    "pos_Lung Lesion": 18124,
+    "pos_Pneumonia": 25410,
+    "pos_Edema": 64060,
+    "pos_Pleural Effusion": 117441,
+    "pos_Cardiomegaly": 61825,
+    "pos_Lung Opacity": 133050,
+    "pos_Atelectasis": 64958,
+    "pos_Pneumothorax": 23104,
+    "pos_Support Devices": 151629,
+    "pos_Pleural Other": 9219,
+    "missing": 77144,
+    "pos_Fracture": 15799,
+    "pos_Enlarged Cardiomediastinum": 13393
+  },
+  "per_source": {
+    "0": {
+      "rows": 191230,
+      "observed": 179875,
+      "pos_No Finding": 82614,
+      "pos_Consolidation": 4106,
+      "pos_Lung Lesion": 4987,
+      "pos_Pneumonia": 12256,
+      "pos_Edema": 14533,
+      "pos_Pleural Effusion": 27664,
+      "pos_Cardiomegaly": 21109,
+      "pos_Lung Opacity": 34564,
+      "pos_Atelectasis": 25574,
+      "pos_Pneumothorax": 5180,
+      "pos_Support Devices": 24759,
+      "pos_Pleural Other": 1243,
+      "missing": 11355,
+      "pos_Fracture": 3497,
+      "pos_Enlarged Cardiomediastinum": 2910
+    },
+    "1": {
+      "rows": 205967,
+      "observed": 195815,
+      "pos_Lung Opacity": 98486,
+      "pos_Support Devices": 111182,
+      "pos_Atelectasis": 31386,
+      "pos_Pleural Effusion": 79924,
+      "pos_Cardiomegaly": 25694,
+      "pos_Edema": 48071,
+      "pos_Consolidation": 13424,
+      "pos_Pneumonia": 5201,
+      "missing": 10152,
+      "pos_No Finding": 12432,
+      "pos_Fracture": 8527,
+      "pos_Pleural Other": 3329,
+      "pos_Enlarged Cardiomediastinum": 10483,
+      "pos_Lung Lesion": 8402,
+      "pos_Pneumothorax": 17391
+    },
+    "2": {
+      "rows": 160861,
+      "observed": 105224,
+      "pos_No Finding": 50484,
+      "missing": 55637,
+      "pos_Atelectasis": 7998,
+      "pos_Pleural Effusion": 9853,
+      "pos_Pleural Other": 4647,
+      "pos_Support Devices": 15688,
+      "pos_Pneumonia": 7953,
+      "pos_Consolidation": 2497,
+      "pos_Cardiomegaly": 15022,
+      "pos_Lung Lesion": 4735,
+      "pos_Fracture": 3775,
+      "pos_Edema": 1456,
+      "pos_Pneumothorax": 533
+    }
+  },
+  "examples": [
+    {
+      "ImageID": "/home/hyr/Medical_Image_Analysis-main/AM_MRG/dataset/mimic/official_data_iccv_final/files/p10/p10000032/s50414267/02aa804e-bde0afdd-112c0b34-7bc16630-4e384014.jpg",
+      "source_id": 0,
+      "Disease": "no finding.",
+      "labels14": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "ImageID": "/home/hyr/Medical_Image_Analysis-main/AM_MRG/dataset/mimic/official_data_iccv_final/files/p10/p10000032/s50414267/174413ec-4ec4c1f7-34ea26b7-c5f994f8-79ef1962.jpg",
+      "source_id": 0,
+      "Disease": "no finding.",
+      "labels14": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "ImageID": "/home/hyr/Medical_Image_Analysis-main/AM_MRG/dataset/mimic/official_data_iccv_final/files/p10/p10000032/s53189527/2a2277a9-b0ded155-c0de8eb9-c124d10e-82c5caab.jpg",
+      "source_id": 0,
+      "Disease": "no finding.",
+      "labels14": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    }
+  ]
+}

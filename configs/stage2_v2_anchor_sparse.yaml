@@ -1,0 +1,32 @@
+experiment: stage2_v2_anchor_guided_sparse_refiner
+model: BiomedCLIP-PubMedBERT_256-vit_base_patch16_224
+pretrained: /home/hyr/clip/biomedclip_encoder_generalization/BiomedCLIP-PubMedBERT/open_clip_pytorch_model.bin
+selected_layers: [3, 6, 9, 12]
+embed_dim: 512
+num_queries: 4
+num_heads: 8
+sparse_topk: 4
+teacher_temperature: 0.07
+residual_scale: 0.2
+lambda_pres: 0.5
+lambda_local: 1.0
+lambda_attn: 1.0
+epochs: 10
+lr: 0.0001
+weight_decay: 0.01
+batch_size: 32
+seed: 42
+notes:
+  - Stage-1 visual backbone and text encoder are fully frozen.
+  - Stage-2 uses no US-CPA, no cross-sample relation loss, and no source ID.
+  - Public layer ids are 1-based; selected_layers [3,6,9,12] maps to zero-based blocks [2,5,8,11].
+loso:
+  mimic:
+    train_jsonl: /home/hyr/clip/biomedclip_encoder_generalization/dataset/heldout_mimic/train_chexpert_padchest_heldout_mimic.jsonl
+    stage1_checkpoint: /home/hyr/clip/biomedclip_encoder_generalization/open_clip/src/logs/h0_stage1_hcpa_p_clip_vitb16_heldout_mimic_seed42/checkpoints/epoch_10.pt
+  chexpert:
+    train_jsonl: /home/hyr/clip/biomedclip_encoder_generalization/dataset/heldout_chexpert/train_mimic_padchest_heldout_chexpert.jsonl
+    stage1_checkpoint: /home/hyr/clip/biomedclip_encoder_generalization/open_clip/src/logs/h0_stage1_hcpa_p_clip_vitb16_heldout_chexpert_seed42/checkpoints/epoch_9.pt
+  padchest:
+    train_jsonl: /home/hyr/clip/biomedclip_encoder_generalization/dataset/heldout_padchest/train_mimic_chexpert_heldout_padchest.jsonl
+    stage1_checkpoint: /home/hyr/clip/biomedclip_encoder_generalization/open_clip/src/logs/h0_stage1_hcpa_p_heldout_padchest_nooldcpa/checkpoints/epoch_20.pt
